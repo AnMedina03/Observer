@@ -16,8 +16,6 @@ public class Main extends Application{
 		Text txt = new Text("");
 		HBox root=new HBox();
 		customize(btn1,btn2,btn3,txt,root,gp);
-		gp.add(root, 0,0);
-		gp.add(txt, 0, 1);
 		Scene scene= new Scene(gp,300,400);
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -29,6 +27,8 @@ public class Main extends Application{
 		btn3.setOnAction(event -> {color3(gp, txt);});
 		root.setSpacing(15);
 		root.getChildren().addAll(btn1,btn2,btn3);
+		gp.add(root, 0,0);
+		gp.add(txt, 0, 1);
 	}
 	
 	public void color1(GridPane root,Text txt) {
