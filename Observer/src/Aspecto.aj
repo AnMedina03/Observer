@@ -3,6 +3,27 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public aspect Aspecto {
+	pointcut operacion(): execution(* sumar*());
+	
+	after(): operacion() {
+		Alert show = new Alert(Alert.AlertType.WARNING);
+		
+        show.setTitle("TITULO DEL MENSAJE");
+	
+		if(thisJoinPoint.getSignature().toString().equals("void operacion.sumar1()")) {
+			show.setHeaderText("Realizo la operacion 1 ");
+	        show.setContentText("Su sumo 10  ");
+		}
+		else if(thisJoinPoint.getSignature().toString().equals("void operacion.sumar2()")) {
+			show.setHeaderText("Realizo la operacion 2 ");
+	        show.setContentText("Su sumo 15  ");
+		}else{
+			show.setHeaderText("Realizo la operacion 3 ");
+	        show.setContentText("Su sumo 20  ");
+	       
+		}
+		 show.showAndWait();
+	}
 	pointcut color() : execution(* color*(..));
 	after(): color() {
 		Alert show = new Alert(Alert.AlertType.WARNING);
@@ -12,7 +33,7 @@ public aspect Aspecto {
 		if(thisJoinPoint.getSignature().toString().equals("void Main.color1(GridPane, Text)")) {
 			arg.setText("Color 1: Rojo");
 			arg.setFill(Color.YELLOW);
-	        show.setContentText("Cambio a color Rojo");
+	        show.setContentText("Cambio a color Rojo  ");
 			System.out.println("Color 1: Rojo");
 		}
 		else if(thisJoinPoint.getSignature().toString().equals("void Main.color2(GridPane, Text)")) {
