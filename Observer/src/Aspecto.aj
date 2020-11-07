@@ -7,9 +7,7 @@ public aspect Aspecto {
 	
 	after(): operacion() {
 		Alert show = new Alert(Alert.AlertType.WARNING);
-		
-        show.setTitle("TITULO DEL MENSAJE");
-	
+        show.setTitle("Funcionalidad Adicional Realizada con exito");
 		if(thisJoinPoint.getSignature().toString().equals("void operacion.sumar1()")) {
 			show.setHeaderText("Realizo la operacion 1 ");
 	        show.setContentText("Su sumo 10  ");
@@ -28,7 +26,7 @@ public aspect Aspecto {
 	after(): color() {
 		Alert show = new Alert(Alert.AlertType.WARNING);
 		show.setHeaderText("ÉXITO!!!!");
-        show.setTitle("TITULO DEL MENSAJE");
+        show.setTitle("Funcionalidad realizada con exito");
 		Text arg = (Text) thisJoinPoint.getArgs()[1];
 		if(thisJoinPoint.getSignature().toString().equals("void Main.color1(GridPane, Text)")) {
 			arg.setText("Color 1: Rojo");
